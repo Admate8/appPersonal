@@ -24,6 +24,12 @@ usethis::use_package("lubridate", min_version = TRUE)
 usethis::use_package("dplyr", min_version = TRUE)
 usethis::use_package("tidyr", min_version = TRUE)
 usethis::use_package("janitor", min_version = TRUE)
+usethis::use_package("bslib", min_version = TRUE)
+usethis::use_package("tibble", min_version = TRUE)
+usethis::use_package("htmltools", min_version = TRUE)
+usethis::use_package("grDevices", min_version = TRUE)
+usethis::use_package("tippy", min_version = TRUE)
+usethis::use_package("glue", min_version = TRUE)
 usethis::use_tidy_description()
 
 

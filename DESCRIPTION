@@ -11,16 +11,22 @@ BugReports: https://github.com/Admate8/appPersonal.git/issues
 Depends: 
     R (>= 2.10)
 Imports: 
+    bslib (>= 0.7.0),
     config,
     dplyr (>= 1.1.2),
+    glue (>= 1.7.0),
     golem,
+    grDevices (>= 4.3.1),
     here (>= 1.0.1),
+    htmltools (>= 0.5.8.1),
     janitor (>= 2.2.0),
     lubridate (>= 1.9.2),
     pdftools (>= 3.3.3),
     shiny,
     stringr (>= 1.5.0),
-    tidyr (>= 1.3.0)
+    tibble (>= 3.2.1),
+    tidyr (>= 1.3.0),
+    tippy (>= 0.1.0)
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

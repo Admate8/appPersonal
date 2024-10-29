@@ -8,9 +8,29 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
+
     # Your application UI logic
-    fluidPage(
-      h1("appPersonal")
+    bslib::page_fluid(
+      theme = app_theme,
+      bslib::page_navbar(
+        title = tags$strong("#Personal"),
+
+        position = "fixed-top",
+        bslib::nav_spacer(),
+
+        # Tab A: Home ----
+        bslib::nav_panel(
+          title = tagList(shiny::icon("home"), "Home"),
+          tableOutput("test_table")
+        ),
+
+        # Tab B: Spend ----
+        bslib::nav_panel(
+          title = tagList(shiny::icon("money-bill-wave"), "Spend")
+        )
+
+      ),
+      ui_footer
     )
   )
 }
