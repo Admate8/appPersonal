@@ -8,7 +8,7 @@
 A data frame with 20 rows and 13 columns:
 \describe{
   \item{date}{Measurement date.}
-  \item{nect}{Neck measurement (cm).}
+  \item{neck}{Neck measurement (cm).}
   \item{shoulders}{Shoulder measurement (cm).}
   \item{chest}{Chest measurement (cm).}
   \item{bicep}{Bicep measurement (cm).}

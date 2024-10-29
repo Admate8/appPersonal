@@ -180,7 +180,7 @@
 #' A data frame with 20 rows and 13 columns:
 #' \describe{
 #'   \item{date}{Measurement date.}
-#'   \item{nect}{Neck measurement (cm).}
+#'   \item{neck}{Neck measurement (cm).}
 #'   \item{shoulders}{Shoulder measurement (cm).}
 #'   \item{chest}{Chest measurement (cm).}
 #'   \item{bicep}{Bicep measurement (cm).}
@@ -210,9 +210,15 @@
 #' A data frame with 66 rows and 11 columns:
 #' \describe{
 #'   \item{date}{Begining of the month date.}
-#'   \item{interest_rate_xx}{Interest rate for either undergraduate (_ug) or postgraduate (_pg) loan in that month.}
-#'   \item{outlay_xx}{Money sent to the university covering your undergarduate (_ug) or postgraduate (_pg) tuition fees.}
-#'   \item{interest_xx}{Interest accrued for either undergraduate (_ug) or postgraduate (_pg) loans in that month.}
-#'   \item{repays_xx}{Total repayments (PAYE + overseas + voluntary) in that month.}
+#'   \item{interest_rate_ug}{Interest rate for undergraduate loan in that month.}
+#'   \item{interest_rate_pg}{Interest rate for postgraduate loan in that month.}
+#'   \item{outlay_ug}{Money sent to the university covering your undergarduate tuition fees.}
+#'   \item{outlay_pg}{Money sent to the university covering your postgarduate tuition fees.}
+#'   \item{interest_ug}{Interest accrued for undergraduate loan in that month.}
+#'   \item{interest_pg}{Interest accrued for postgraduate loan in that month.}
+#'   \item{repays_ug}{Total undergraduate repayments (PAYE + overseas + voluntary) in that month.}
+#'   \item{repays_pg}{Total postgraduate repayments (PAYE + overseas + voluntary) in that month.}
+#'   \item{balance_ug}{Total undergraduate loan balance at the end of that month.}
+#'   \item{balance_pg}{Total postgraduate loan balance at the end of that month.}
 #' }
 "df_loan_repays"
