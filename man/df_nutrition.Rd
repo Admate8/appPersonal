@@ -27,7 +27,7 @@ df_nutrition
 \description{
 The \href{https://www.fatsecret.com}{FatSecret} app is brilliant for tracking
 meals and nutrition. It allows exporting your data as either PDF or CSV.
-In \code{data-raw/nutrition.R}, in the app source code, I added a piece of code
+\href{https://github.com/Admate8/appPersonal/tree/main/data-raw/nutrition.R}{\code{nutrition.R}}, in the app source code, contains a script
 I run weekly to collect and clean my data, which I then combine with historical
 data.
 }

@@ -16,7 +16,15 @@
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
 ## install.packages('attachment') # if needed.
-attachment::att_amend_desc()
+# attachment::att_amend_desc()
+usethis::use_package("pdftools", min_version = TRUE)
+usethis::use_package("stringr", min_version = TRUE)
+usethis::use_package("here", min_version = TRUE)
+usethis::use_package("lubridate", min_version = TRUE)
+usethis::use_package("dplyr", min_version = TRUE)
+usethis::use_package("tidyr", min_version = TRUE)
+usethis::use_package("janitor", min_version = TRUE)
+usethis::use_tidy_description()
 
 
 # Documentation

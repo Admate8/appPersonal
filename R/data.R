@@ -109,7 +109,7 @@
 #'
 #' The \href{https://www.fatsecret.com}{FatSecret} app is brilliant for tracking
 #' meals and nutrition. It allows exporting your data as either PDF or CSV.
-#' In \code{data-raw/nutrition.R}, in the app source code, I added a piece of code
+#' \href{https://github.com/Admate8/appPersonal/tree/main/data-raw/nutrition.R}{\code{nutrition.R}}, in the app source code, contains a script
 #' I run weekly to collect and clean my data, which I then combine with historical
 #' data.
 #'
@@ -194,3 +194,25 @@
 #'   \item{target_calories}{1.1 * bmr.}
 #' }
 "df_measurements"
+
+
+
+#' Artificial Student Loan Repayments Data
+#'
+#' Each financial year SLC sends a letter detailing student loan repayments and
+#' interest accumulated over time. You can find example letters in the source code:
+#' \href{https://github.com/Admate8/appPersonal/tree/main/inst/extdata}{\code{extdata}}.
+#' \href{https://github.com/Admate8/appPersonal/tree/main/data-raw/student_loan_letters.R}{\code{student_loan_letters.R}} contains a script
+#' allowing you to scrape this data and clean it. \code{df_loan_repays} data is
+#' the result of such preprocessing.
+#'
+#' @format
+#' A data frame with 66 rows and 11 columns:
+#' \describe{
+#'   \item{date}{Begining of the month date.}
+#'   \item{interest_rate_xx}{Interest rate for either undergraduate (_ug) or postgraduate (_pg) loan in that month.}
+#'   \item{outlay_xx}{Money sent to the university covering your undergarduate (_ug) or postgraduate (_pg) tuition fees.}
+#'   \item{interest_xx}{Interest accrued for either undergraduate (_ug) or postgraduate (_pg) loans in that month.}
+#'   \item{repays_xx}{Total repayments (PAYE + overseas + voluntary) in that month.}
+#' }
+"df_loan_repays"
