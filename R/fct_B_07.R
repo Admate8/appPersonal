@@ -50,10 +50,11 @@ table_spend_biggest_spend <- function(selected_month, df_transactions) {
       wrap            = FALSE,
       paginationType  = "simple",
       columns         = list(
-        date     = reactable::colDef(width = 80, name = "Date"),
-        spend    = reactable::colDef(width = 75, name = "Spend", format = reactable::colFormat(currency = "GBP", digits = 2, separators = TRUE)),
-        category = reactable::colDef(width = 120, name = "Category", cell = reactablefmtr::pill_buttons(data = df_transformations_biggest_spend, color_ref = "color")),
-        color    = reactable::colDef(show = FALSE)
+        description = reactable::colDef(name = "Description"),
+        date        = reactable::colDef(width = 80, name = "Date"),
+        spend       = reactable::colDef(width = 75, name = "Spend", format = reactable::colFormat(currency = "GBP", digits = 2, separators = TRUE)),
+        category    = reactable::colDef(width = 120, name = "Category", cell = reactablefmtr::pill_buttons(data = df_transformations_biggest_spend, color_ref = "color")),
+        color       = reactable::colDef(show = FALSE)
       )
     )
 }
@@ -78,9 +79,10 @@ table_spend_most_often <- function(selected_month, df_transactions) {
       wrap            = FALSE,
       paginationType  = "simple",
       columns         = list(
-        count    = reactable::colDef(width = 55, name = "Count"),
-        category = reactable::colDef(width = 120, name = "Category", cell = reactablefmtr::pill_buttons(data = df_transformations_most_often, color_ref = "color")),
-        color    = reactable::colDef(show = FALSE)
+        description = reactable::colDef(name = "Description"),
+        count       = reactable::colDef(width = 70, name = "Count"),
+        category    = reactable::colDef(width = 120, name = "Category", cell = reactablefmtr::pill_buttons(data = df_transformations_most_often, color_ref = "color")),
+        color       = reactable::colDef(show = FALSE)
       )
     )
 }
