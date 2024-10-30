@@ -10,7 +10,7 @@
 #'
 #' @return Preprocessed data ready for the spend over time plot.
 #' @noRd
-df_spend_over_time <- function(df_transactions, df_earnings) {
+get_df_spend_over_time <- function(df_transactions, df_earnings) {
 
   df_transactions |>
     # Sum spend by month-year and categories
@@ -52,7 +52,7 @@ df_spend_over_time <- function(df_transactions, df_earnings) {
 #' @noRd
 plot_spend_over_time <- function(date, df_transactions, df_earnings) {
 
-  df_spend_over_time(df_transactions, df_earnings) |>
+  get_df_spend_over_time(df_transactions, df_earnings) |>
     dplyr::group_by(category) |>
     echarts4r::e_chart(x = date_month) |>
     echarts4r::e_bar(
