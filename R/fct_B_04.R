@@ -131,8 +131,6 @@ get_df_spend_comparison <- function(date, df_transactions, df_earnings) {
 
   # Reorder the first column to match the order from the plots
   df_spend_comparison_ready[base::order(base::match(df_spend_comparison_ready$category, col_palette_categories$category)),]
-
-  return(df_spend_comparison_ready)
 }
 
 
