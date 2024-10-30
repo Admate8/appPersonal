@@ -1,0 +1,4 @@
+/* Prevent the navigation panel to overflow the dashboard body */
+body {
+    padding-top: 70px !important;
+}

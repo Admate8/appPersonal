@@ -18,17 +18,9 @@ app_ui <- function(request) {
         position = "fixed-top",
         bslib::nav_spacer(),
 
-        # Tab A: Home ----
-        bslib::nav_panel(
-          title = tagList(shiny::icon("home"), "Home"),
-          tableOutput("test_table")
-        ),
-
-        # Tab B: Spend ----
-        bslib::nav_panel(
-          title = tagList(shiny::icon("money-bill-wave"), "Spend")
-        )
-
+        # Tabs ----
+        ui_A,
+        ui_B
       ),
       ui_footer
     )

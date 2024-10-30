@@ -9,6 +9,8 @@ run_app(
   options = list(),
   enableBookmarking = NULL,
   uiPattern = "/",
+  operating_month = lubridate::floor_date(max(appPersonal::df_earnings$date), unit =
+    "month"),
   ...
 )
 }
@@ -32,6 +34,11 @@ for more information on bookmarking your app.}
 request to determine whether the \code{ui} should be used to handle the
 request. Note that the entire request path must match the regular
 expression in order for the match to be considered successful.}
+
+\item{operating_month}{Gloabl app setting that controls things like plot sliders
+defaults or earnings calculations. In the live version of the app, I have it
+set to the latest full calendar. In the static version, it makes sense to set
+ it to the max available.}
 
 \item{...}{arguments to pass to golem_opts.
 See `?golem::get_golem_options` for more details.}
