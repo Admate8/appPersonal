@@ -42,4 +42,23 @@ app_server <- function(input, output, session) {
     get_df_expenses_assets_change(golem::get_golem_options("operating_month"), appPersonal::df_transactions, appPersonal::df_earnings) |> dplyr::filter(category == "Assets") |> dplyr::pull(change_previous_six_avg_perc),
     "percentage", shiny::icon("piggy-bank")
   )
+
+  output$plot_spend_breakdown <- plotly::renderPlotly(
+    get_df_spend_breakdown(lubridate::my(input$select_B_month), appPersonal::df_transactions) |>
+      plot_spend_breakdown()
+  )
+  output$plot_spend_gauge_chart_spend <- echarts4r::renderEcharts4r({
+    data    <- get_df_spend_gauge(lubridate::my(input$select_B_month), appPersonal::df_transactions)
+    value   <- data[data$type == "Total Spend" & data$name == "selected",]$spend
+    average <- data[data$type == "Total Spend" & data$name == "average",]$spend
+    plot_spend_gauge_chart(value, "Total Expenses", average, "green", "orange", "red")
+  })
+  output$plot_spend_gauge_chart_assets <- echarts4r::renderEcharts4r({
+    data    <- get_df_spend_gauge(lubridate::my(input$select_B_month), appPersonal::df_transactions)
+    value   <- data[data$type == "Total Assets" & data$name == "selected",]$spend
+    average <- data[data$type == "Total Assets" & data$name == "average",]$spend
+    plot_spend_gauge_chart(value, "Total Assets", average, "red", "orange", "green")
+  })
+  output$table_biggest_spend       <- reactable::renderReactable({table_spend_biggest_spend(lubridate::my(input$select_B_month), appPersonal::df_transactions)})
+  output$table_most_frequent_spend <- reactable::renderReactable({table_spend_most_often(lubridate::my(input$select_B_month), appPersonal::df_transactions)})
 }

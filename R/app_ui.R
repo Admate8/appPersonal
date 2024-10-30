@@ -19,7 +19,7 @@ app_ui <- function(request) {
 
         # Tabs ----
         ui_A,
-        ui_B
+        ui_B(golem::get_golem_options("operating_month"))
       ),
       ui_footer
     )

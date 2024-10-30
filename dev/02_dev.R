@@ -37,6 +37,8 @@ usethis::use_package("reactable", min_version = TRUE)
 usethis::use_package("reactablefmtr", min_version = TRUE)
 usethis::use_package("scales", min_version = TRUE)
 usethis::use_package("methods", min_version = TRUE)
+usethis::use_package("plotly", min_version = TRUE)
+usethis::use_package("shinyWidgets", min_version = TRUE)
 usethis::use_tidy_description()
 
 
