@@ -1,4 +1,9 @@
 /* Prevent the navigation panel to overflow the dashboard body */
 body {
-    padding-top: 70px !important;
+    padding-top: 90px !important;
+}
+
+/* Make the navbar and the pages sligthly bigger */
+.nav-link, .nav-tabs > li > a, .nav-pills > li > a, :where(ul.nav.navbar-nav > li) > a {
+  font-size: 1rem !important;
 }

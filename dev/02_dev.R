@@ -33,6 +33,10 @@ usethis::use_package("glue", min_version = TRUE)
 usethis::use_package("echarts4r", min_version = TRUE)
 usethis::use_package("shinycssloaders", min_version = TRUE)
 usethis::use_package("htmlwidgets", min_version = TRUE)
+usethis::use_package("reactable", min_version = TRUE)
+usethis::use_package("reactablefmtr", min_version = TRUE)
+usethis::use_package("scales", min_version = TRUE)
+usethis::use_package("methods", min_version = TRUE)
 usethis::use_tidy_description()
 
 

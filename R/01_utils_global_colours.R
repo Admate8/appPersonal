@@ -9,9 +9,12 @@ table_header_col    <- "white"
 app_theme <- bslib::bs_theme(
   preset  = "shiny",
   version = 5,
-  "nav-link-hover-color" = primary_col,
-  "navbar-light-bg"      = primary_col,
-  "primary"              = secondary_col
+  "nav-link-hover-color"     = primary_col,
+  "navbar-bg"                = primary_col,
+  "navbar-brand-font-size"   = "1.5rem",
+  "primary"                  = secondary_col,
+  "navbar-padding-y"         = "1rem",
+  "navbar-toggler-font-size" = "1.5rem"
 )
 
 

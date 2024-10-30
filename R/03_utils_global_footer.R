@@ -1,14 +1,15 @@
 ui_footer <- tags$footer(
   style = glue::glue(
     "background-color: {get_hex_colour_shade(secondary_col, 0.5)};
-    position: fixed;
+    position: relative;
     margin-left: -15px;
     bottom: 0px;
-    left = 0px;
+    left: 0px;
     width: calc(100% + 24px);
     height: 65px;
     border-top: 2px solid {get_hex_colour_shade(secondary_col, 0.2)};
-    padding: 15px 40px 15px 30px;"
+    padding: 15px 40px 15px 30px;
+    z-index: 9999;"
   ),
 
   tags$div(

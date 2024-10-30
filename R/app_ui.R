@@ -13,8 +13,7 @@ app_ui <- function(request) {
     bslib::page_fluid(
       theme = app_theme,
       bslib::page_navbar(
-        title = tags$strong("#Personal"),
-
+        title = htmltools::tagList(icon("hashtag"), tags$strong("Personal")),
         position = "fixed-top",
         bslib::nav_spacer(),
 
