@@ -70,7 +70,7 @@ plot_spend_over_time_perc <- function(date, df_transactions, df_earnings) {
       valueFormatter = htmlwidgets::JS("function(value) {return parseFloat(value) + '%';}")
     ) |>
     echarts4r::e_y_axis(axisLabel = list(formatter = '{value}%')) |>
-    custom_legend() |>
+    custom_legend(itemGap = 20) |>
     custom_datazoom(
       x_index = 0
       # Capture the whole year - shift the slider slightly before the beginning of the year

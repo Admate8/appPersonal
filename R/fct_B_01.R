@@ -94,7 +94,7 @@ plot_spend_over_time <- function(date, df_transactions, df_earnings) {
         ))
       )
     ) |>
-    custom_legend() |>
+    custom_legend(itemGap = 20) |>
     custom_datazoom(
       x_index = 0
       # Capture the whole year - shift the slider slightly before the beginning of the year

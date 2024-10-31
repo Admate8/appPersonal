@@ -61,4 +61,15 @@ app_server <- function(input, output, session) {
   })
   output$table_biggest_spend       <- reactable::renderReactable({table_spend_biggest_spend(lubridate::my(input$select_B_month), appPersonal::df_transactions)})
   output$table_most_frequent_spend <- reactable::renderReactable({table_spend_most_often(lubridate::my(input$select_B_month), appPersonal::df_transactions)})
+
+
+  # Tab C: Earnings ----
+  output$plot_earnings_over_time <- echarts4r::renderEcharts4r(plot_earnings_over_time(golem::get_golem_options("operating_month"), appPersonal::df_earnings))
+  observeEvent(input$select_C_loans_view, {
+    if (input$select_C_loans_view == "loans_balance")    plot_to_draw <- plot_liabilities_waterfall(appPersonal::df_loan_repays)
+    else if (input$select_C_loans_view == "loan_change") plot_to_draw <- plot_loans_over_time(appPersonal::df_loan_repays)
+    else                                                 plot_to_draw <- plot_loan_interest_rates(appPersonal::df_historical_rpi, appPersonal::df_loan_repays)
+
+    output$plot_liabilities <- echarts4r::renderEcharts4r(plot_to_draw)
+  })
 }

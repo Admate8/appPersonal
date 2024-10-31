@@ -139,7 +139,6 @@ custom_legend <- function(...) {
     top               = "middle",
     left              = "left",
     orient            = "vertical",
-    itemGap           = 20,
     itemWidth         = 30,
     itemHeight        = 17,
     backgroundColor   = "rgba(240, 240, 240)",
