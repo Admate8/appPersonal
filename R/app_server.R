@@ -72,4 +72,5 @@ app_server <- function(input, output, session) {
 
     output$plot_liabilities <- echarts4r::renderEcharts4r(plot_to_draw)
   })
+  output$table_earnings_check    <- reactable::renderReactable({table_earnings_check(lubridate::my(input$select_C_month), appPersonal::df_earnings)})
 }

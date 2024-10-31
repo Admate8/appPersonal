@@ -29,21 +29,21 @@ ui_c <- function(operating_month) {
             echarts4r::echarts4rOutput("plot_liabilities", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
           )
         )
-      )
+      ),
 
-      # bslib::card(
-      #   bslib::card_title(custom_title("Earnings & Deductions Checks")),
-      #   tags$div(
-      #     style = "position: absolute; top: 15px; right: 20px;",
-      #     shinyWidgets::pickerInput(
-      #       inputId  = "select_B_month",
-      #       label    = NULL,
-      #       choices  = base::format(base::seq.Date(golem::get_golem_options("operating_month") - base::months(5), golem::get_golem_options("operating_month"), by = "month"), "%B %Y"),
-      #       selected = base::format(golem::get_golem_options("operating_month"), "%B %Y")
-      #     )
-      #   ),
-      #   reactable::reactableOutput("table_earnings_check")
-      # ),
+      bslib::card(
+        bslib::card_title(custom_title("Earnings & Deductions Checks")),
+        tags$div(
+          style = "position: absolute; top: 15px; right: 20px;",
+          shinyWidgets::pickerInput(
+            inputId  = "select_C_month",
+            label    = NULL,
+            choices  = base::format(base::seq.Date(golem::get_golem_options("operating_month") - base::months(5), golem::get_golem_options("operating_month"), by = "month"), "%B %Y"),
+            selected = base::format(golem::get_golem_options("operating_month"), "%B %Y")
+          )
+        ),
+        reactable::reactableOutput("table_earnings_check")
+      )
       # bslib::card(
       #   bslib::layout_columns(
       #     col_widths = c(4, 6, 2),
