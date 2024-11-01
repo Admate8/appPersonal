@@ -73,4 +73,91 @@ app_server <- function(input, output, session) {
     output$plot_liabilities <- echarts4r::renderEcharts4r(plot_to_draw)
   })
   output$table_earnings_check    <- reactable::renderReactable({table_earnings_check(lubridate::my(input$select_C_month), appPersonal::df_earnings)})
+  # Open the annual allowance settings model on the button click
+  # "Remember" the settings on the modal exit
+  observeEvent(input$alowances_settings, {
+    if (!is.null(input$set_tax_allowance))    shinyWidgets::updateCurrencyInput(session = session, "set_tax_allowance", value = input$set_tax_allowance)
+    if (!is.null(input$set_ni_allowance))     shinyWidgets::updateCurrencyInput(session = session, "set_ni_allowance", value = input$set_ni_allowance)
+    if (!is.null(input$set_slp2_allowance))   shinyWidgets::updateCurrencyInput(session = session, "set_slp2_allowance", value = input$set_slp2_allowance)
+    if (!is.null(input$set_slpgrd_allowance)) shinyWidgets::updateCurrencyInput(session = session, "set_slpgrd_allowance", value = input$set_slpgrd_allowance)
+    if (!is.null(input$is_alpha))             shinyWidgets::updateMaterialSwitch(session = session, "is_alpha", value = input$is_alpha)
+    if (!is.null(input$set_pension_contr))    shinyWidgets::updateCurrencyInput(session = session, "set_pension_contr", value = input$set_pension_contr)
+    if (!is.null(input$set_scaling_factor))   shinyWidgets::updateCurrencyInput(session = session, "set_scaling_factor", value = input$set_scaling_factor)
+
+    showModal(set_allowances_modal())
+  })
+  # Restore the default allowance settings on the button click
+  observeEvent(input$reset_allowances, {
+    shinyWidgets::updateCurrencyInput(session = session, "set_tax_allowance", value = 12570)
+    shinyWidgets::updateCurrencyInput(session = session, "set_ni_allowance", value = 12570)
+    shinyWidgets::updateCurrencyInput(session = session, "set_slp2_allowance", value = 27288)
+    shinyWidgets::updateCurrencyInput(session = session, "set_slpgrd_allowance", value = 21000)
+    shinyWidgets::updateMaterialSwitch(session = session, "is_alpha", value = TRUE)
+    shinyWidgets::updateCurrencyInput(session = session, "set_pension_contr", value = 0.04)
+    shinyWidgets::updateCurrencyInput(session = session, "set_scaling_factor", value = 0)
+  })
+  # Validate user's input
+  iv_gross <- shinyvalidate::InputValidator$new()
+  iv_gross$add_rule("gross_annual_earnings", function(value) {if (!is.numeric(value) || value <= 1000) paste0("Must be greater than \u00A3", scales::comma(1000))})
+  iv_gross$enable()
+  iv <- shinyvalidate::InputValidator$new()
+  iv$add_rule("set_tax_allowance",    function(value) {if (!is.numeric(value) || value < 0) paste0("Must be \u2265 \u00A3", "0")})
+  iv$add_rule("set_ni_allowance",     function(value) {if (!is.numeric(value) || value < 0) paste0("Must be \u2265 \u00A3", "0")})
+  iv$add_rule("set_slp2_allowance",   function(value) {if (!is.numeric(value) || value < 0) paste0("Must be \u2265 \u00A3", "0")})
+  iv$add_rule("set_slpgrd_allowance", function(value) {if (!is.numeric(value) || value < 0) paste0("Must be \u2265 \u00A3", "0")})
+  iv$add_rule("set_pension_contr",    function(value) {if (!is.numeric(value) || value < 0 || value >= 1) "Must be between 0% and 100%"})
+  iv$add_rule("set_scaling_factor",   function(value) {if (!is.numeric(value) || value <= -1) "Must be \u2265 -100%"})
+  # Remove the annual allowance settings modal on the button click if the input is valid
+  observeEvent(input$save_allowances, {
+    if (!iv$is_valid()) {
+      iv$enable()
+      showNotification("Set up valid allowances", type = "error")
+    } else {
+      removeModal()
+    }
+  })
+  # Update the allowance settings on the button click
+  selected_allowances <- eventReactive(c(input$alowances_settings, input$save_allowances), {
+    # Restore default settings if the input is invalid
+    if (!iv$is_valid()) {list(
+      tax_allowance    = 12570,
+      ni_allowance     = 12570,
+      slp2_allowance   = 27288,
+      slpgrd_allowance = 21000,
+      is_alpha         = TRUE,
+      pension_contr    = 0.04,
+      scaling_factor   = 0
+    )} else {list(
+      tax_allowance    = input$set_tax_allowance,
+      ni_allowance     = input$set_ni_allowance,
+      slp2_allowance   = input$set_slp2_allowance,
+      slpgrd_allowance = input$set_slpgrd_allowance,
+      is_alpha         = input$is_alpha,
+      pension_contr    = input$set_pension_contr,
+      scaling_factor   = input$set_scaling_factor
+    )}
+  })
+  # Restore default gross annual earnings if the input is invalid
+  gross_annual_earnings          <- reactive({base::ifelse(input$gross_annual_earnings < 1000, 34963, input$gross_annual_earnings)})
+  output$table_income_calculator <- reactable::renderReactable({table_income_calculator(
+    gross_annual_earnings(),
+    scaling_factor   = selected_allowances()[["scaling_factor"]],
+    period           = input$select_calc_period,
+    alpha            = selected_allowances()[["is_alpha"]],
+    penstion_contr   = selected_allowances()[["pension_contr"]],
+    tax_allowance    = selected_allowances()[["tax_allowance"]],
+    ni_allowance     = selected_allowances()[["ni_allowance"]],
+    slp2_allowance   = selected_allowances()[["slp2_allowance"]],
+    slpgrd_allowance = selected_allowances()[["slpgrd_allowance"]]
+  )})
+  # output$plot_deductions_calculator <- echarts4r::renderEcharts4r({plot_deductions_calculator(
+  #   scaling_factor   = selected_allowances()[["scaling_factor"]],
+  #   period           = input$select_calc_period,
+  #   alpha            = selected_allowances()[["is_alpha"]],
+  #   penstion_contr   = selected_allowances()[["pension_contr"]],
+  #   tax_allowance    = selected_allowances()[["tax_allowance"]],
+  #   ni_allowance     = selected_allowances()[["ni_allowance"]],
+  #   slp2_allowance   = selected_allowances()[["slp2_allowance"]],
+  #   slpgrd_allowance = selected_allowances()[["slpgrd_allowance"]]
+  # )})
 }

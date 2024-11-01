@@ -109,9 +109,9 @@ plot_earnings_over_time <- function(date, df_earnings) {
     ) |>
     custom_legend(itemGap = 17) |>
     custom_datazoom(
-      x_index = 0
+      x_index = 0,
       # Capture the whole year - shift the slider slightly before the beginning of the year
-      # startValue = as.Date(paste0(lubridate::year(date) - 1, "-12-27"))
+      startValue = as.Date(paste0(lubridate::year(date) - 2, "-12-27"))
     ) |>
     echarts4r::e_grid(left = "22%") |>
     echarts4r::e_theme("roma")

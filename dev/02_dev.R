@@ -40,6 +40,7 @@ usethis::use_package("methods", min_version = TRUE)
 usethis::use_package("plotly", min_version = TRUE)
 usethis::use_package("shinyWidgets", min_version = TRUE)
 usethis::use_package("tidyselect", min_version = TRUE)
+usethis::use_package("shinyvalidate", min_version = TRUE)
 usethis::use_tidy_description()
 
 

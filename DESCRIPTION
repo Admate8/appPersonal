@@ -31,6 +31,7 @@ Imports:
     scales (>= 1.2.1),
     shiny,
     shinycssloaders (>= 1.0.0),
+    shinyvalidate (>= 0.1.2),
     shinyWidgets (>= 0.7.6),
     stringr (>= 1.5.0),
     tibble (>= 3.2.1),

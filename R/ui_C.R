@@ -43,42 +43,42 @@ ui_c <- function(operating_month) {
           )
         ),
         reactable::reactableOutput("table_earnings_check")
-      )
-      # bslib::card(
-      #   bslib::layout_columns(
-      #     col_widths = c(4, 6, 2),
-      #     tags$div(
-      #       id = "label-left-container",
-      #       shinyWidgets::currencyInput(
-      #         inputId = "gross_annual_earnings",
-      #         value   = golem::get_golem_options("gross_annual_earnings"),
-      #         format  = "British",
-      #         label   = NULL
-      #       )
-      #     ),
-      #     tags$div(
-      #       class = "d-flex justify-content-center align-items-center",
-      #       shinyWidgets::radioGroupButtons(
-      #         inputId    = "select_calc_period",
-      #         label      = NULL,
-      #         choices    = c("Yearly" = "year", "Monthly" = "month", "Weekly" = "week"),
-      #         selected   = "year",
-      #         individual = TRUE,
-      #         size       = "sm"
-      #       )
-      #     ),
-      #     shinyWidgets::actionBttn(
-      #       inputId = "alowances_settings",
-      #       label   = NULL,
-      #       icon    = icon("gear"),
-      #       width   = "100%",
-      #       style   = "simple",
-      #       color   = "primary",
-      #       size    = "sm"
-      #     )
-      #   ),
-      #   reactable::reactableOutput("table_income_calculator")
-      # ),
+      ),
+      bslib::card(
+        bslib::layout_columns(
+          col_widths = c(4, 6, 2),
+          tags$div(
+            id = "label-left-container",
+            shinyWidgets::currencyInput(
+              inputId = "gross_annual_earnings",
+              value   = 34963,
+              format  = "British",
+              label   = NULL
+            )
+          ),
+          tags$div(
+            class = "d-flex justify-content-center align-items-center",
+            shinyWidgets::radioGroupButtons(
+              inputId    = "select_calc_period",
+              label      = NULL,
+              choices    = c("Yearly" = "year", "Monthly" = "month", "Weekly" = "week"),
+              selected   = "year",
+              individual = TRUE,
+              size       = "sm"
+            )
+          ),
+          shinyWidgets::actionBttn(
+            inputId = "alowances_settings",
+            label   = NULL,
+            icon    = icon("gear"),
+            width   = "100%",
+            style   = "simple",
+            color   = "primary",
+            size    = "sm"
+          )
+        ),
+        reactable::reactableOutput("table_income_calculator")
+      ),
       # bslib::card(
       #   bslib::card_title(tags$strong("Gross Earnings with Deductions Breakdown")),
       #   tags$div(

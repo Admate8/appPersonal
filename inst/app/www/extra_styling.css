@@ -7,3 +7,29 @@ body {
 .nav-link, .nav-tabs > li > a, .nav-pills > li > a, :where(ul.nav.navbar-nav > li) > a {
   font-size: 1rem !important;
 }
+
+/* Make the font size smaller in the annual allowance settings modal */
+#gross_annual_earnings {font-size: 1em !important;}
+#set_tax_allowance {font-size: 1em !important;}
+#set_ni_allowance {font-size: 1em !important;}
+#set_slp2_allowance {font-size: 1em !important;}
+#set_slpgrd_allowance {font-size: 1em !important;}
+#set_pension_contr {font-size: 0.8em !important;}
+#set_scaling_factor {font-size: 1em !important;}
+
+/* Custom class that will move a widget's label to the left-hand side */
+#label-left-container label {
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    width: 50%;
+}
+#label-left-container .form-group {
+    display: table-row;
+}
+
+/* Customise the action / download buttons */
+.bttn-gradient.bttn-primary, .bttn-simple.bttn-primary {
+    background: #023C40;
+    width: 100%;
+}
