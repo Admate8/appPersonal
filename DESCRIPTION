@@ -28,6 +28,7 @@ Imports:
     plotly (>= 4.10.1),
     reactable (>= 0.4.4),
     reactablefmtr (>= 2.0.0),
+    rsconnect (>= 0.8.29),
     scales (>= 1.2.1),
     shiny,
     shinycssloaders (>= 1.0.0),
