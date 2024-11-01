@@ -79,20 +79,20 @@ ui_c <- function(operating_month) {
         ),
         reactable::reactableOutput("table_income_calculator")
       ),
-      # bslib::card(
-      #   bslib::card_title(tags$strong("Gross Earnings with Deductions Breakdown")),
-      #   tags$div(
-      #     style = "position: absolute; top: 25px; right: 35px;",
-      #     shinyWidgets::actionBttn(
-      #       inputId = "deductions_links",
-      #       label   = "Useful Links",
-      #       size    = "sm",
-      #       style   = "simple",
-      #       color   = "primary"
-      #     )
-      #   ),
-      #   echarts4r::echarts4rOutput("plot_deductions_calculator", height = "500px") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5)
-      # )
+      bslib::card(
+        bslib::card_title(tags$strong("Gross Earnings with Deductions Breakdown")),
+        tags$div(
+          style = "position: absolute; top: 25px; right: 35px;",
+          shinyWidgets::actionBttn(
+            inputId = "deductions_links",
+            label   = "Useful Links",
+            size    = "sm",
+            style   = "simple",
+            color   = "primary"
+          )
+        ),
+        echarts4r::echarts4rOutput("plot_deductions_calculator", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+      )
     )
   )
 }

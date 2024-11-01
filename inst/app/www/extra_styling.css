@@ -33,3 +33,14 @@ body {
     background: #023C40;
     width: 100%;
 }
+
+/* Make the pop up font size smaller */
+.swal2-container.swal2-center > .swal2-popup {
+    font-size: 1rem !important;
+}
+
+/* Center the modal header */
+.modal-title {
+    text-align: center;
+    width: 100%;
+}

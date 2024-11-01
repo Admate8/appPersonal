@@ -143,15 +143,7 @@ get_df_income_calculator <- function(
 
 #' Draw the Income Calculator Table
 #'
-#' @param annual_gross_earnings The annual gross earnings; not a vector.
-#' @param scaling_factor Increase/decrease in annual gross earnings; must be greater than -1.
-#' @param period Either a "year", "month" or "week".
-#' @param alpha Should Alpha Pension Scheme be applied? TRUE/FALSE.
-#' @param penstion_contr If alpha == FALSE, provide the pension contribution.
-#' @param tax_allowance Tax allowance.
-#' @param ni_allowance National Insurance allowance.
-#' @param slp2_allowance Student Loan Plan 2 allowance.
-#' @param slpgrd_allowance Student Loan Postgrad allowance.
+#' @inheritParams appPersonal::get_df_income_calculator
 #'
 #' @return Reactable table.
 #' @noRd

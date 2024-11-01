@@ -13,8 +13,7 @@ app_theme <- bslib::bs_theme(
   "navbar-bg"                = primary_col,
   "navbar-brand-font-size"   = "1.5rem",
   "primary"                  = secondary_col,
-  "navbar-padding-y"         = "1rem",
-  "navbar-toggler-font-size" = "1.5rem"
+  "navbar-padding-y"         = "1rem"
 )
 
 

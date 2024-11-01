@@ -150,14 +150,18 @@ app_server <- function(input, output, session) {
     slp2_allowance   = selected_allowances()[["slp2_allowance"]],
     slpgrd_allowance = selected_allowances()[["slpgrd_allowance"]]
   )})
-  # output$plot_deductions_calculator <- echarts4r::renderEcharts4r({plot_deductions_calculator(
-  #   scaling_factor   = selected_allowances()[["scaling_factor"]],
-  #   period           = input$select_calc_period,
-  #   alpha            = selected_allowances()[["is_alpha"]],
-  #   penstion_contr   = selected_allowances()[["pension_contr"]],
-  #   tax_allowance    = selected_allowances()[["tax_allowance"]],
-  #   ni_allowance     = selected_allowances()[["ni_allowance"]],
-  #   slp2_allowance   = selected_allowances()[["slp2_allowance"]],
-  #   slpgrd_allowance = selected_allowances()[["slpgrd_allowance"]]
-  # )})
+  output$plot_deductions_calculator <- echarts4r::renderEcharts4r({plot_deductions_calculator(
+    scaling_factor   = selected_allowances()[["scaling_factor"]],
+    period           = input$select_calc_period,
+    alpha            = selected_allowances()[["is_alpha"]],
+    penstion_contr   = selected_allowances()[["pension_contr"]],
+    tax_allowance    = selected_allowances()[["tax_allowance"]],
+    ni_allowance     = selected_allowances()[["ni_allowance"]],
+    slp2_allowance   = selected_allowances()[["slp2_allowance"]],
+    slpgrd_allowance = selected_allowances()[["slpgrd_allowance"]]
+  )})
+  # Render the useful links modal on the button click
+  observeEvent(input$deductions_links, {
+    useful_links_modal()
+  })
 }

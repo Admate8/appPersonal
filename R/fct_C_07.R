@@ -55,9 +55,9 @@ useful_links_modal <- function() {
     title      = "Useful Links",
     type       = "info",
     btn_labels = "Close",
-    btn_colors = spinners_colour,
+    btn_colors = spinners_col,
     html       = TRUE,
-    text       = HTML(
+    text       = htmltools::HTML(
       "<div style = 'text-align: left;'> <ul>
           <li><a href='https://www.gov.uk/income-tax-rates' target='_blank'>Income Tax rates and Personal Allowances</a></li>
           <li><a href='https://www.gov.uk/national-insurance-rates-letters' target='_blank'>National Insurance rates and categories</a></li>
