@@ -44,3 +44,10 @@ body {
     text-align: center;
     width: 100%;
 }
+
+/* Customise the value box icons */
+.bslib-value-box.default .value-box-showcase > i.fas {
+    background: linear-gradient(140deg, #023C40 36%, #74149c 180%) #023C40;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

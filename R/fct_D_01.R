@@ -61,7 +61,7 @@ plot_nutrition_calendar <- function(date, type, df_nutrition, target_calories = 
     name_1 <- "Carbohydrate"
     name_2 <- "Protein"
     name_3 <- "Fat"
-    suffix <- "cal"
+    suffix <- " cal"
   }
   else if (type == "Nutrients") {
     name_1 <- "Saturates"

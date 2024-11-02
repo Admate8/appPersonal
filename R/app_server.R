@@ -166,7 +166,8 @@ app_server <- function(input, output, session) {
   })
 
   # Tab D: Nutrition ----
-  output$plot_cal_macros    <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Macros", appPersonal::df_nutrition))})
-  output$plot_cal_nutrients <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Nutrients", appPersonal::df_nutrition))})
-  output$plot_cal_others    <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Others", appPersonal::df_nutrition))})
+  output$plot_cal_macros        <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Macros", appPersonal::df_nutrition))})
+  output$plot_cal_nutrients     <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Nutrients", appPersonal::df_nutrition))})
+  output$plot_cal_others        <- echarts4r::renderEcharts4r({echarts4r::e_charts() |>  echarts4r::e_list(plot_nutrition_calendar(date = lubridate::my(input$select_D_month), type = "Others", appPersonal::df_nutrition))})
+  output$target_nutrition_cards <- renderUI({show_target_nutrition_cards(date = lubridate::my(input$select_D_month), appPersonal::df_nutrition, 2400, height = "650px")})
 }
