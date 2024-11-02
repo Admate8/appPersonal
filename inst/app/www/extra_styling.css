@@ -1,6 +1,6 @@
 /* Prevent the navigation panel to overflow the dashboard body */
 body {
-    padding-top: 90px !important;
+    padding-top: 70px !important;
 }
 
 /* Make the navbar and the pages sligthly bigger */

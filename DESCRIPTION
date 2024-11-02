@@ -26,6 +26,7 @@ Imports:
     methods (>= 4.3.1),
     pdftools (>= 3.3.3),
     plotly (>= 4.10.1),
+    purrr (>= 1.0.1),
     reactable (>= 0.4.4),
     reactablefmtr (>= 2.0.0),
     rsconnect (>= 0.8.29),

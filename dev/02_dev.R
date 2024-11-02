@@ -42,6 +42,7 @@ usethis::use_package("shinyWidgets", min_version = TRUE)
 usethis::use_package("tidyselect", min_version = TRUE)
 usethis::use_package("shinyvalidate", min_version = TRUE)
 usethis::use_package("rsconnect", min_version = TRUE)
+usethis::use_package("purrr", min_version = TRUE)
 usethis::use_tidy_description()
 
 
