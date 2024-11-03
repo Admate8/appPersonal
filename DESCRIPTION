@@ -16,6 +16,7 @@ Imports:
     dataui (>= 0.0.1),
     dplyr (>= 1.1.2),
     echarts4r (>= 0.4.5),
+    forcats (>= 1.0.0),
     glue (>= 1.7.0),
     golem,
     grDevices (>= 4.3.1),

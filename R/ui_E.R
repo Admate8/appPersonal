@@ -59,7 +59,10 @@ ui_E <- function(operating_month) {
         class = "center",
         echarts4r::echarts4rOutput("exercises_rating_calendar", height = "200px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
         echarts4r::echarts4rOutput("exercises_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
-        # echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5)
+      ),
+      bslib::card(
+        bslib::card_title(custom_title("Exercises During Gym Sessions")),
+        echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
       )
     )
   )
