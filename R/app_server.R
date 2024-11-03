@@ -177,5 +177,6 @@ app_server <- function(input, output, session) {
   output$exercises_felt_like_stars <- renderUI({get_exercises_felt_like_stars(lubridate::my(input$select_E_month), appPersonal::df_rating)})
   output$exercises_felt_like_text  <- renderUI({get_exercises_felt_like_text(lubridate::my(input$select_E_month), appPersonal::df_rating)})
   output$exercises_rating_calendar <- echarts4r::renderEcharts4r({plot_exercises_rating_calendar(as.numeric(gsub("\\D", "", input$select_E_year)), appPersonal::df_rating)})
+  output$exercises_over_time       <- echarts4r::renderEcharts4r({plot_exercises_over_time(as.numeric(gsub("\\D", "", input$select_E_year)), appPersonal::df_exercises)})
 
 }
