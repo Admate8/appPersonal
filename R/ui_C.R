@@ -2,7 +2,7 @@
 #'
 #' @param operating_month golem::get_golem_options("operating_month")
 #' @noRd
-ui_c <- function(operating_month) {
+ui_C <- function(operating_month) {
   bslib::nav_panel(
     title = tagList(shiny::icon("sterling-sign"), "Earnings"),
 

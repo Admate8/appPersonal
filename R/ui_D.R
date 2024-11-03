@@ -2,7 +2,7 @@
 #'
 #' @param operating_month golem::get_golem_options("operating_month")
 #' @noRd
-ui_d <- function(operating_month) {
+ui_D <- function(operating_month) {
   bslib::nav_panel(
     title = tagList(shiny::icon("capsules"), "Nutrition"),
 

@@ -20,8 +20,9 @@ app_ui <- function(request) {
         # Tabs ----
         ui_A,
         ui_B(golem::get_golem_options("operating_month")),
-        ui_c(golem::get_golem_options("operating_month")),
-        ui_d(golem::get_golem_options("operating_month"))
+        ui_C(golem::get_golem_options("operating_month")),
+        ui_D(golem::get_golem_options("operating_month")),
+        ui_E(golem::get_golem_options("operating_month"))
       ),
       ui_footer
     )
