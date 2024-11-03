@@ -45,22 +45,22 @@ ui_E <- function(operating_month) {
           )
         )
       ),
-      # bslib::card(
-      #   tags$div(
-      #     style = "position: absolute; top: 20px; right: 25px;",
-      #     shinyWidgets::pickerInput(
-      #       inputId  = "select_D_year",
-      #       label    = NULL,
-      #       choices  = paste("Year", sort(unique(lubridate::year(df_exercises$Date)))),
-      #       selected = paste("Year", lubridate::year(golem::get_golem_options("operating_month")))
-      #     )
-      #   ),
-      #   bslib::card_title(custom_title("Rating and Exercises Over Time")),
-      #   class = "center",
-      #   echarts4r::echarts4rOutput("exercises_rating_calendar", height = "200px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5),
-      #   echarts4r::echarts4rOutput("exercises_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5),
-      #   echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5)
-      # )
+      bslib::card(
+        tags$div(
+          style = "position: absolute; top: 20px; right: 25px;",
+          shinyWidgets::pickerInput(
+            inputId  = "select_E_year",
+            label    = NULL,
+            choices  = paste("Year", seq(2023, lubridate::year(Sys.Date()))),
+            selected = paste("Year", lubridate::year(operating_month))
+          )
+        ),
+        bslib::card_title(custom_title("Rating and Exercises Over Time")),
+        class = "center",
+        echarts4r::echarts4rOutput("exercises_rating_calendar", height = "200px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+        # echarts4r::echarts4rOutput("exercises_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5),
+        # echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5)
+      )
     )
   )
 }
