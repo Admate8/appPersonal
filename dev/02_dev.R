@@ -44,6 +44,7 @@ usethis::use_package("shinyvalidate", min_version = TRUE)
 usethis::use_package("rsconnect", min_version = TRUE)
 usethis::use_package("purrr", min_version = TRUE)
 usethis::use_dev_package("dataui", remote = "url::https://github.com/timelyportfolio/dataui@HEAD")
+usethis::use_package("shinyRatings", min_version = TRUE)
 usethis::use_tidy_description()
 
 

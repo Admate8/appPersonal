@@ -66,9 +66,9 @@ table_measurements <- function(df_measurements) {
           )
         )
       ),
-      rowStyle = function(index) if (index %in% c(7, 8, 12)) list(`border-bottom` = "thin solid"),
+      rowStyle      = function(index) if (index %in% c(7, 8, 12)) list(`border-bottom` = "thin solid"),
       defaultColDef = reactable::colDef(maxWidth = 80),
-      theme = reactable::reactableTheme(
+      theme         = reactable::reactableTheme(
         highlightColor = "#f7f7f7",
         style          = list(borderRadius = 10)
       )

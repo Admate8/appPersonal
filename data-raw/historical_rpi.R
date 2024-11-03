@@ -3,7 +3,7 @@
 # ONS API currently (as of writing this code) doesn't allow scrapping the RPI
 # data, and it must first be saved locally before processing
 
-file_path <- "/Users/adrianwisnios/Desktop/appPersonal Public/data/data-source/historical_RPI.csv"
+file_path <- file.path(here::here(), "data/data-source/historical_RPI.csv")
 
 df_historical_rpi <- utils::read.csv(file_path) |>
   # Begin from March 2018 - adjust to be March of the year you started uni

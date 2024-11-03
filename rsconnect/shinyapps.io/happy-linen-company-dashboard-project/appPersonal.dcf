@@ -5,7 +5,7 @@ account: happy-linen-company-dashboard-project
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13203693
-bundleId: 9301951
+bundleId: 9309267
 url: https://personal-projects-prod.shinyapps.io/appPersonal/
-when: 1730465264.38815
-lastSyncTime: 1730465264.38817
+when: 1730658401.76848
+lastSyncTime: 1730658401.7685
