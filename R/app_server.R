@@ -183,4 +183,6 @@ app_server <- function(input, output, session) {
   # Tab F: Personal Development ----
   output$table_pdev               <- reactable::renderReactable({table_pdev(appPersonal::df_issues)})
   output$network_pdev             <- visNetwork::renderVisNetwork({plot_network_pdev(reactable::getReactableState("table_pdev", name = "selected"), appPersonal::df_issues, appPersonal::df_issue_relationships)})
+  output$text_solution_pdev       <- renderUI({text_solution_pdev(reactable::getReactableState("table_pdev", name = "selected"), appPersonal::df_issues)})
+  output$table_pdev_relationships <- reactable::renderReactable({table_pdev_relationships(reactable::getReactableState("table_pdev", name = "selected"), appPersonal::df_issues, appPersonal::df_issue_relationships)})
 }
