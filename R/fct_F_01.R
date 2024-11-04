@@ -1,5 +1,5 @@
 
-# Data & Code for the Psyche Table ----------------------------------------
+# Code for the Personal Development Table ---------------------------------
 
 
 #' Draw the Psyche Table

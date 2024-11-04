@@ -7,8 +7,9 @@ ui_F <- bslib::nav_panel(
 
       bslib::layout_columns(
         #col_widths = c(7, 5, 7, 5),
-        reactable::reactableOutput("table_pdev", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
-        # visNetwork::visNetworkOutput("network_psyche"),
+        col_widths = c(7, 5),
+        reactable::reactableOutput("table_pdev", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+        visNetwork::visNetworkOutput("network_pdev"),
         # bslib::card(uiOutput("text_solution_psyche"), height = "145px"),
         # reactable::reactableOutput("table_psyche_relationships", height = "145px") |> shinycssloaders::withSpinner(color = spinners_colour, size = 1.5)
       )
