@@ -51,3 +51,15 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* Custom styling of the gantt chart */
+.vis-item {
+    border-color: #035D63;
+    background-color: #035D63;
+    color: white;
+}
+.vis-item.vis-selected {
+    border-color: #CBA4AB;
+    background-color: #CBA4AB;
+    color: white;
+}

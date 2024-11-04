@@ -105,6 +105,22 @@
 
 
 
+#' Example Issue Logs
+#'
+#' Progress logs on resolving issues relating to personal development.
+#'
+#' @format
+#' A data frame with 100 rows and 4 columns:
+#' \describe{
+#'   \item{content}{Log title.}
+#'   \item{date}{When did the log take place?}
+#'   \item{issue}{Issue the log relates to.}
+#'   \item{log}{Log text.}
+#' }
+"df_issue_logs"
+
+
+
 #' Example Nutrition Data
 #'
 #' The \href{https://www.fatsecret.com}{FatSecret} app is brilliant for tracking

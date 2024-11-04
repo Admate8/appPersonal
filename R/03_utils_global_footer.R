@@ -5,11 +5,11 @@ ui_footer <- tags$footer(
     margin-left: -15px;
     bottom: 0px;
     left: 0px;
-    width: calc(100% + 24px);
+    width: calc(100% + 30px);
     height: 65px;
     border-top: 2px solid {get_hex_colour_shade(secondary_col, 0.2)};
     padding: 15px 40px 15px 30px;
-    z-index: 9999;"
+    z-index: 1000;"
   ),
 
   tags$div(
