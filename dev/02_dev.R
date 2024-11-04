@@ -48,6 +48,8 @@ usethis::use_package("shinyRatings", min_version = TRUE)
 usethis::use_package("forcats", min_version = TRUE)
 usethis::use_package("visNetwork", min_version = TRUE)
 usethis::use_package("timevis", min_version = TRUE)
+usethis::use_package("jsonlite", min_version = TRUE)
+usethis::use_package("rmarkdown", min_version = TRUE)
 usethis::use_tidy_description()
 
 

@@ -188,11 +188,9 @@ app_server <- function(input, output, session) {
   output$ui_select_issues         <- renderUI({
     shinyWidgets::pickerInput(
       inputId  = "select_F_issue",
-      choices  = split(
-        get_df_pdev_progress_split(appPersonal::df_issue_logs, appPersonal::df_issues)$name,
-        get_df_pdev_progress_split(appPersonal::df_issue_logs, appPersonal::df_issues)$domain
-      ),
+      choices  = get_df_pdev_progress_split(appPersonal::df_issue_logs, appPersonal::df_issues),
       multiple = TRUE,
+      selected = c(2, 3, 4, 6, 8, 13),
       options  = shinyWidgets::pickerOptions(
         actionsBox       = TRUE,
         liveSearch       = TRUE,
@@ -202,5 +200,52 @@ app_server <- function(input, output, session) {
     )
   })
   output$gantt_chart_pdev_logs    <- timevis::renderTimevis({plot_gantt_chart_pdev_logs(input$select_F_issue, appPersonal::df_issue_logs, appPersonal::df_issues)})
+  observeEvent(input$gantt_chart_pdev_logs_selected, {showModal(modal_selected_log(input$gantt_chart_pdev_logs_selected, appPersonal::df_issue_logs, appPersonal::df_issues))})
+  # Data & Code for the single log download handler
+  df_single_selected_log <- reactive({
+    req(input$gantt_chart_pdev_logs_selected)
 
+    get_df_pdev_gantt(appPersonal::df_issue_logs, appPersonal::df_issues)[["df_progress"]] |>
+      dplyr::filter(id == input$gantt_chart_pdev_logs_selected) |>
+      dplyr::rename(start = date, group = issue, description = log)
+  })
+  output$single_log_download <- downloadHandler(
+    filename = "Single_Log.pdf",
+    content = function(file){
+      params <- list(data = jsonlite::toJSON(df_single_selected_log(), na = "null"))
+      id     <- showNotification("Rendering report...", duration = NULL, closeButton = FALSE)
+      on.exit(removeNotification(id), add = TRUE)
+      rmarkdown::render(
+        file.path(here::here(), "inst/app/rmd_log_templates/single_log.Rmd"),
+        output_file = file,
+        params      = params,
+        envir       = new.env(parent = globalenv())
+      )
+    }
+  )
+  # Data & Code for the multiple log download handler
+  df_all_selected_issues <- reactive({
+    if (is.null(input$select_F_issue)) {
+      get_df_pdev_gantt(appPersonal::df_issue_logs, appPersonal::df_issues)[["df_progress"]] |>
+        dplyr::rename(start = date, group = issue, description = log)
+    } else {
+      get_df_pdev_gantt(appPersonal::df_issue_logs, appPersonal::df_issues)[["df_progress"]] |>
+        dplyr::filter(id_issue %in% input$select_F_issue) |>
+        dplyr::rename(start = date, group = issue, description = log)
+    }
+  })
+  output$multiple_logs_download <- downloadHandler(
+    filename = "Progress_Logs.pdf",
+    content = function(file){
+      params <- list(data = jsonlite::toJSON(df_all_selected_issues(), na = "null"))
+      id     <- showNotification("Rendering report...", duration = NULL, closeButton = FALSE)
+      on.exit(removeNotification(id), add = TRUE)
+      rmarkdown::render(
+        file.path(here::here(), "inst/app/rmd_log_templates/multiple_logs_parent.Rmd"),
+        output_file = file,
+        params      = params,
+        envir       = new.env(parent = globalenv())
+      )
+    }
+  )
 }

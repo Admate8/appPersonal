@@ -1,0 +1,29 @@
+---
+output: 
+  pdf_document:
+    extra_dependencies: ["fancyhdr", "booktabs"]
+    latex_engine: xelatex
+  
+geometry: "top=2.5cm,bottom=2.5cm,left=2cm,right=2cm"
+fontsize: 12pt
+mainfont: Times New Roman
+
+params:
+  data: "Something"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+df <- jsonlite::fromJSON(params$data)
+```
+\vspace{10cm}
+\begin{center}
+\Large \textbf{`r df$content`} \\
+\large `r format(as.Date(df$start), "%d %B %Y")`
+\end{center}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{`r paste("ISSUE:", toupper(df$group))`}
+\fancyfoot[L,LO]{\small{Downloaded on `r format(Sys.Date(), "%d %B %Y")`}}
+\fancyfoot[R,RO]{\thepage}
+`r df$description`

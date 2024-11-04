@@ -1,0 +1,6 @@
+---
+output: pdf_document
+---
+## `r paste0(single_log$content, " (", format(as.Date(single_log$start), "%d %B %Y"), ")")`
+`r single_log$description`
+\clearpage

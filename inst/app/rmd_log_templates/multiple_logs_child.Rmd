@@ -1,0 +1,19 @@
+---
+output: pdf_document
+---
+# `r paste("Issue: ", unique(single_issue$group))`
+
+```{r, results = 'asis'}
+for (log in 1:nrow(single_issue)) {
+  single_log <- single_issue[log,]
+  cat(
+    knitr::knit_child(
+      file.path(here::here(), "inst/app/rmd_log_templates/multiple_logs_grand_child.Rmd"),
+      quiet = TRUE,
+      envir = environment()
+    )
+  )
+}
+```
+
+\clearpage

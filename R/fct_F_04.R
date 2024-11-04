@@ -8,16 +8,17 @@
 #' @param df_issues Issues data. See \code{appPersonal::df_issues}.
 #' @noRd
 get_df_pdev_progress_split <- function(df_issue_logs, df_issues) {
-  df_issue_logs |>
+  df <- df_issue_logs |>
     dplyr::left_join(
       df_issues |> dplyr::select(id_issue = id, issue, domain, score),
       by = "issue"
     ) |>
     dplyr::mutate(id = dplyr::row_number()) |>
-    dplyr::mutate(name = paste0("(ID: ", id_issue, ") ", issue)) |>
     dplyr::arrange(id_issue) |>
-    dplyr::select(name, domain) |>
+    dplyr::select(id_issue, domain, issue) |>
     unique()
+
+  split(setNames(df$id_issue, df$issue), df$domain)
 }
 
 
@@ -57,29 +58,39 @@ get_df_pdev_gantt <- function(df_issue_logs, df_issues) {
 #' @noRd
 plot_gantt_chart_pdev_logs <- function(selected_issue_ids, df_issue_logs, df_issues) {
 
-  # Formatted data for the personal development gantt chart
-  df <- df_issue_logs |>
-    dplyr::left_join(
-      df_issues |> dplyr::select(id_issue = id, issue, domain, score),
-      by = "issue"
-    ) |>
-    dplyr::mutate(id = dplyr::row_number())
-
-  # Formatted groups for the personal development gantt chart
-  df_groups <- df |>
-    dplyr::select(id = issue, id_issue) |>
-    unique() |>
-    dplyr::mutate(content = paste0("<b>", id, "</b>"))
+  df        <- get_df_pdev_gantt(df_issue_logs, df_issues)[["df_progress"]]
+  df_groups <- get_df_pdev_gantt(df_issue_logs, df_issues)[["df_progress_groups"]]
 
   if (!is.null(selected_issue_ids)) {
     df        <- df |>
-      dplyr::filter(id_issue %in% as.numeric(gsub("[^0-9]", "", selected_issue_ids)))
+      dplyr::filter(id_issue %in% selected_issue_ids)
     df_groups <- df_groups |>
-      dplyr::filter(id_issue %in% as.numeric(gsub("[^0-9]", "", selected_issue_ids)))
+      dplyr::filter(id_issue %in% selected_issue_ids)
   }
 
   timevis::timevis(
     data   = df |> dplyr::rename(start = date, group = issue, description = log),
     groups = df_groups
+  )
+}
+
+
+#' Function Displaying Selected Log (from the gantt chart)
+#'
+#' @param selected_log Id of the selected log
+#'
+#' @return Modal containing details about the selected log
+#' @noRd
+modal_selected_log <- function(selected_log, df_issue_logs, df_issues) {
+
+  df <- get_df_pdev_gantt(df_issue_logs, df_issues)[["df_progress"]] |>
+    dplyr::filter(id == selected_log)
+
+  shiny::modalDialog(
+    title     = htmltools::HTML(paste0(df$domain, "<b>: ", df$content, "</b><br><em>", format(df$date, "%d %B %Y"), "</em>")),
+    htmltools::HTML(paste0(df$log, collapse = "")),
+    size      = "xl",
+    easyClose = TRUE,
+    footer    = NULL
   )
 }

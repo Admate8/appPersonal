@@ -1,0 +1,43 @@
+---
+output: 
+  pdf_document:
+    extra_dependencies: ["fancyhdr", "booktabs"]
+    latex_engine: xelatex
+  
+geometry: "top=2.5cm,bottom=2.5cm,left=2cm,right=2cm"
+fontsize: 12pt
+mainfont: Times New Roman
+
+params:
+  data: ""
+---
+\vspace{10cm}
+\begin{center}
+\Huge \textbf{Progress Logs}
+\end{center}
+\hrule
+\setlength{\headheight}{15pt}
+\tableofcontents\thispagestyle{empty}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+\fancyfoot[L,LO]{\small{Downloaded on `r format(Sys.Date(), "%d %B %Y")`}}
+\fancyfoot[R,RO]{\thepage}
+\clearpage
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+df <- jsonlite::fromJSON(params$data) 
+df <- df |> dplyr::arrange(dplyr::desc(score), start)
+```
+```{r, results = 'asis'}
+for (issue in unique(df$group)) {
+  single_issue <- df[df$group == issue,]
+  cat(
+    knitr::knit_child(
+      file.path(here::here(), "inst/app/rmd_log_templates/multiple_logs_child.Rmd"),
+      quiet = TRUE,
+      envir = environment()
+    )
+  )
+}
+```
