@@ -180,5 +180,7 @@ app_server <- function(input, output, session) {
   output$exercises_over_time       <- echarts4r::renderEcharts4r({plot_exercises_over_time(as.numeric(gsub("\\D", "", input$select_E_year)), appPersonal::df_exercises)})
   output$gym_sessions_over_time    <- echarts4r::renderEcharts4r({plot_gym_sessions(appPersonal::df_exercises)})
 
+  # Tab F: Personal Development ----
+  output$table_pdev               <- reactable::renderReactable({table_pdev(appPersonal::df_issues)})
 
 }
