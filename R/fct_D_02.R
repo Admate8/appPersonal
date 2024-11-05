@@ -20,7 +20,7 @@ get_df_target_nutrition_cards <- function(date, df_nutrition) {
     dplyr::summarise_if(is.numeric, mean, na.rm = TRUE) |>
     # Compute the relative percentages of the nutrition. "l_" stands for "label_".
     dplyr::mutate(
-      l_cal   = paste0(scales::comma(round(cals)), " kcal"),
+      l_cal   = paste0(scales::comma(round(cals)), " cal"),
       l_carbs = paste0(round(100 *  4 * carbs / (4 * carbs + 9 * fat + 4 * prot), 1), "%"),
       l_prot  = paste0(round(100 * 4 * prot / (4 * carbs + 9 * fat + 4 * prot), 1), "%"),
       l_fat   = paste0(round(100 * 9 * fat / (4 * carbs + 9 * fat + 4 * prot), 1), "%"),

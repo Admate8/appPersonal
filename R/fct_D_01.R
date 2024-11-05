@@ -98,11 +98,11 @@ plot_nutrition_calendar <- function(date, type, df_nutrition, target_calories = 
   pieSeries <- purrr::map2(
     .x = df_labels$Date,
     .y = 1:nrow(df_labels),
-    .f = function(date, index) {
+    .f = function(date_select, index) {
       list(
         type   = "pie",
         id     = paste0("pie-", index),
-        center = date,
+        center = date_select,
         radius = 40,
         color  = list(
           col_palette_nutritions[col_palette_nutritions$category == name_1,]$color,
@@ -124,9 +124,9 @@ plot_nutrition_calendar <- function(date, type, df_nutrition, target_calories = 
           )
         ),
         data = list(
-          (df |> dplyr::filter(date == date) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[2]],
-          (df |> dplyr::filter(date == date) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[3]],
-          (df |> dplyr::filter(date == date) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[4]]
+          (df |> dplyr::filter(date == date_select) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[2]],
+          (df |> dplyr::filter(date == date_select) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[3]],
+          (df |> dplyr::filter(date == date_select) |> as.list() |> purrr::imap(~list(name = .y, value = .x)))[[4]]
         )
       )
     }
