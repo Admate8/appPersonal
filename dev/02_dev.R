@@ -51,6 +51,7 @@ usethis::use_package("timevis", min_version = TRUE)
 usethis::use_package("jsonlite", min_version = TRUE)
 usethis::use_package("rmarkdown", min_version = TRUE)
 usethis::use_package("igraph", min_version = TRUE)
+usethis::use_package("rintrojs", min_version = TRUE)
 usethis::use_tidy_description()
 
 

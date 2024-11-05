@@ -5,12 +5,21 @@
 ui_C <- function(operating_month) {
   bslib::nav_panel(
     title = tagList(shiny::icon("sterling-sign"), "Earnings"),
+    value = "tab_C",
 
     bslib::layout_columns(
       col_widths = c(12, 6, 6),
       bslib::navset_card_pill(
         title = custom_title("Accounts"),
-        bslib::nav_panel("Earnings & Deductions", echarts4r::echarts4rOutput("plot_earnings_over_time", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)),
+        bslib::nav_panel(
+          title = "Earnings & Deductions",
+          rintrojs::introBox(
+            echarts4r::echarts4rOutput("plot_earnings_over_time", height = "500px") |>
+              shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+            data.step  = 12,
+            data.intro = intro_C_plot_earnings_over_time
+          )
+        ),
         bslib::nav_panel(
           "Liabilities",
           bslib::layout_sidebar(
@@ -26,7 +35,12 @@ ui_C <- function(operating_month) {
                 size      = "lg"
               )
             ),
-            echarts4r::echarts4rOutput("plot_liabilities", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+            rintrojs::introBox(
+              echarts4r::echarts4rOutput("plot_liabilities", height = "500px") |>
+                shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+              data.step  = 13,
+              data.intro = intro_C_plot_liabilities
+            )
           )
         )
       ),
@@ -42,7 +56,12 @@ ui_C <- function(operating_month) {
             selected = base::format(golem::get_golem_options("operating_month"), "%B %Y")
           )
         ),
-        reactable::reactableOutput("table_earnings_check")
+        rintrojs::introBox(
+          reactable::reactableOutput("table_earnings_check"),
+          data.step  = 14,
+          data.intro = intro_C_table_earnings_check,
+          data.position = "right"
+        )
       ),
       bslib::card(
         bslib::layout_columns(
@@ -75,9 +94,19 @@ ui_C <- function(operating_month) {
             style   = "simple",
             color   = "primary",
             size    = "sm"
-          )
+          ) |>
+            rintrojs::introBox(
+              data.step  = 16,
+              data.intro = intro_C_alowances_settings,
+              data.position = "left"
+            )
         ),
-        reactable::reactableOutput("table_income_calculator")
+        reactable::reactableOutput("table_income_calculator") |>
+          rintrojs::introBox(
+            data.step  = 15,
+            data.intro = intro_C_income_simulation_card,
+            data.position = "left"
+          )
       ),
       bslib::card(
         bslib::card_title(tags$strong("Gross Earnings with Deductions Breakdown")),
@@ -89,9 +118,19 @@ ui_C <- function(operating_month) {
             size    = "sm",
             style   = "simple",
             color   = "primary"
-          )
+          ) |>
+            rintrojs::introBox(
+              data.step  = 18,
+              data.intro = intro_C_deductions_links,
+              data.position = "left"
+            )
         ),
-        echarts4r::echarts4rOutput("plot_deductions_calculator", height = "500px") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+        rintrojs::introBox(
+          echarts4r::echarts4rOutput("plot_deductions_calculator", height = "500px") |>
+            shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+          data.step  = 17,
+          data.intro = intro_C_plot_deductions_calculator
+        )
       )
     )
   )

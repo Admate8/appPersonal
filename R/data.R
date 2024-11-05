@@ -134,12 +134,12 @@
 #' \describe{
 #'   \item{type}{Meal category, e.g. breakfast or dinner.}
 #'   \item{cals}{Meal calories.}
-#'   \item{fat}{Meal fat (g, 1g =~ 9kcal).}
+#'   \item{fat}{Meal fat (g, 1g =~ 9cal).}
 #'   \item{sat}{Meal saturates (g).}
-#'   \item{carbs}{Meal carbohydrates (g, 1g =~ 4kcal).}
+#'   \item{carbs}{Meal carbohydrates (g, 1g =~ 4cal).}
 #'   \item{fibre}{Meal fibre (g).}
 #'   \item{sugar}{Meal sugars (g).}
-#'   \item{prot}{Meal proteins (g, 1g =~ 4kcal).}
+#'   \item{prot}{Meal proteins (g, 1g =~ 4cal).}
 #'   \item{sod}{Mead sodium (mg).}
 #'   \item{chol}{Meal cholesterol (g).}
 #'   \item{potassium}{Meal potassium (mg).}

@@ -33,6 +33,7 @@ Imports:
     purrr (>= 1.0.1),
     reactable (>= 0.4.4),
     reactablefmtr (>= 2.0.0),
+    rintrojs (>= 0.3.4),
     rmarkdown (>= 2.26),
     rsconnect (>= 0.8.29),
     scales (>= 1.2.1),

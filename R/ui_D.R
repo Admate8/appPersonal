@@ -5,6 +5,7 @@
 ui_D <- function(operating_month) {
   bslib::nav_panel(
     title = tagList(shiny::icon("capsules"), "Nutrition"),
+    value = "tab_D",
 
     bslib::layout_columns(
       col_widths = c(9, 3),
@@ -22,7 +23,16 @@ ui_D <- function(operating_month) {
             selected = format(operating_month, "%B %Y")
           )
         ),
-        bslib::nav_panel(title = "Macros", echarts4r::echarts4rOutput("plot_cal_macros", width = "100%", height = "650px") |>  shinycssloaders::withSpinner(color = spinners_col, size = 1.5)),
+        bslib::nav_panel(
+          title = "Macros",
+          rintrojs::introBox(
+            echarts4r::echarts4rOutput("plot_cal_macros", width = "100%", height = "650px") |>
+              shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+            data.step  = 19,
+            data.intro = intro_D_plot_cal_macros,
+            data.position = "right"
+          )
+        ),
         bslib::nav_panel(title = "Nutrients", echarts4r::echarts4rOutput("plot_cal_nutrients", width = "100%", height = "650px") |>  shinycssloaders::withSpinner(color = spinners_col, size = 1.5)),
         bslib::nav_panel(title = "Others", echarts4r::echarts4rOutput("plot_cal_others", width = "100%", height = "650px") |>  shinycssloaders::withSpinner(color = spinners_col, size = 1.5))
       ),

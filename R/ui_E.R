@@ -1,12 +1,17 @@
 ui_E <- function(operating_month) {
   bslib::nav_panel(
     title = tagList(shiny::icon("dumbbell"), "Exercises"),
+    value = "tab_E",
 
     bslib::layout_columns(
       col_widths = c(12, 12, 12),
       bslib::card(
         bslib::card_title(custom_title("Measurements Over Time")),
-        reactable::reactableOutput("table_measurements")
+        reactable::reactableOutput("table_measurements") |>
+          rintrojs::introBox(
+            data.step  = 20,
+            data.intro = intro_E_table_measurements
+          )
       ),
       bslib::layout_sidebar(
         sidebar = bslib::sidebar(
@@ -44,7 +49,11 @@ ui_E <- function(operating_month) {
             uiOutput("exercises_felt_like_text")
           )
         )
-      ),
+      ) |>
+        rintrojs::introBox(
+          data.step  = 21,
+          data.intro = intro_E_exercises_gym_targets
+        ),
       bslib::card(
         tags$div(
           style = "position: absolute; top: 20px; right: 25px;",
@@ -57,12 +66,27 @@ ui_E <- function(operating_month) {
         ),
         bslib::card_title(custom_title("Rating and Exercises Over Time")),
         class = "center",
-        echarts4r::echarts4rOutput("exercises_rating_calendar", height = "200px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
-        echarts4r::echarts4rOutput("exercises_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+        rintrojs::introBox(
+          echarts4r::echarts4rOutput("exercises_rating_calendar", height = "200px", width = "100%") |>
+            shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+          data.step  = 22,
+          data.intro = intro_E_exercises_rating_calendar
+        ),
+        rintrojs::introBox(
+          echarts4r::echarts4rOutput("exercises_over_time", height = "300px", width = "100%") |>
+            shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+          data.step  = 23,
+          data.intro = intro_E_exercises_over_time
+        )
       ),
       bslib::card(
         bslib::card_title(custom_title("Exercises During Gym Sessions")),
-        echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+        rintrojs::introBox(
+          echarts4r::echarts4rOutput("gym_sessions_over_time", height = "300px", width = "100%") |>
+            shinycssloaders::withSpinner(color = spinners_col, size = 1.5),
+          data.step  = 24,
+          data.intro = intro_E_gym_sessions_over_time
+        )
       )
     )
   )

@@ -6,6 +6,17 @@
 #' @noRd
 app_server <- function(input, output, session) {
 
+  # Tab A: Home ----
+  observeEvent(input$init_guidance, {
+    rintrojs::introjs(
+      session,
+      events = list(
+        "oncomplete" = I('alert("That is all! I hope you enjoyed the tour! :)")'),
+        onbeforechange = rintrojs::readCallback("switchTabs")
+      )
+    )
+  })
+
   # Tab B: Spend ----
   output$plot_allocations_over_time <- echarts4r::renderEcharts4r(plot_allocations_over_time(golem::get_golem_options("operating_month"), appPersonal::df_transactions, appPersonal::df_earnings))
   output$plot_spend_over_time       <- echarts4r::renderEcharts4r(plot_spend_over_time(golem::get_golem_options("operating_month"), appPersonal::df_transactions, appPersonal::df_earnings))

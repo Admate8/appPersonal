@@ -43,7 +43,7 @@ ui_A <- bslib::nav_panel(
         style = "text-align: justify;",
         HTML(
           "I spent a long time wondering what this app should showcase,
-            only to realize the perfect idea was right under my nose - an app I
+            only to realise the perfect idea was right under my nose - an app I
             already use to manage... well, <em>me</em>! This demo is inspired by
             my personal dashboard (hence the name!) and features artificial
             data (because no one needs to know my monthly supermarket splurges).
