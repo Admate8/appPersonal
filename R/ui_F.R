@@ -78,7 +78,8 @@ ui_F <- bslib::nav_panel(
         ),
         tags$div(
           style = "height: calc(100vh - 65px - 70px - 48px);",
-          timevis::timevisOutput("gantt_chart_pdev_logs") |> shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
+          timevis::timevisOutput("gantt_chart_pdev_logs") |>
+            shinycssloaders::withSpinner(color = spinners_col, size = 1.5)
         )
       ) |>
         rintrojs::introBox(

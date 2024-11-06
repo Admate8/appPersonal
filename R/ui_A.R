@@ -67,7 +67,7 @@ ui_A <- bslib::nav_panel(
       br(), br(),
 
       bslib::layout_columns(
-        col_widths = c(7, 5),
+        col_widths = c(6, 4, 2),
         tags$div(
           tags$span(
             tags$h5(tags$strong("Not sure where to start?")),
@@ -90,6 +90,16 @@ ui_A <- bslib::nav_panel(
             style   = "simple",
             color   = "primary",
             size    = "md"
+          )
+        ),
+        tags$div(
+          style = "margin-top: 10px;",
+          shinyWidgets::downloadBttn(
+            outputId = "cv_download",
+            label    = "CV",
+            style    = "simple",
+            color    = "primary",
+            size     = "md"
           )
         )
       )

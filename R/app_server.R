@@ -16,6 +16,12 @@ app_server <- function(input, output, session) {
       )
     )
   })
+  output$cv_download <- downloadHandler(
+    filename = "CV Adrian Wisnios.pdf",
+    content = function(file){
+      file.copy(file.path(here::here(), "inst/extdata/CV.pdf"), file)
+    }
+  )
 
   # Tab B: Spend ----
   output$plot_allocations_over_time <- echarts4r::renderEcharts4r(plot_allocations_over_time(golem::get_golem_options("operating_month"), appPersonal::df_transactions, appPersonal::df_earnings))
