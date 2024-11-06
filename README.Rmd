@@ -19,38 +19,15 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The goal of appPersonal is to ...
+## The Backstory
+When introducing customers to the magic of Shiny dashboards, I sometimes wish I had a go-to app to really show off its potential. I can rave about past projects, but without being able to share them directly (thanks to NDAs and sensitive data), it can feel like the message doesn't quite hit home. Well, this demo is that punchy showcase! (Or, for those familiar with Shiny, consider it a friendly glimpse of its exciting possibilities!)
 
-## Installation
+## What is \#Personal
+I spent a long time wondering what this app should showcase, only to realise the perfect idea was right under my nose - an app I already use to manage... well, **me**! This demo is inspired by my personal dashboard (hence the name!) and features artificial data (because no one needs to know my monthly supermarket splurges). It's a fun and practical example of how valuable it can be to keep track of different parts of life - from monthly finances to workouts and personal growth.
 
-You can install the development version of appPersonal from [GitHub](https://github.com/) with:
+<center>
 
-``` r
-# install.packages("devtools")
-devtools::install_github("Admate8/appPersonal")
-```
+![](man/figures/app_intro.gif)
 
-## Example
+</center>
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(appPersonal)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
