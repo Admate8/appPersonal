@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
+# [Live app demo here](https://personal-projects-prod.shinyapps.io/appPersonal/)
+
 ## The Backstory
 
 When introducing customers to the magic of Shiny dashboards, I sometimes
@@ -34,3 +36,20 @@ from monthly finances to workouts and personal growth.
 ![](man/figures/app_intro.gif)
 
 </center>
+
+## Demonstrated Skills
+
+-   Utilising the `golem` framework for building R Shiny applications.
+-   Data cleaning, preprocessing and analysis.
+-   Scrapping data from PDF files.
+-   Utilising Shiny reactives and data validation techniques with
+    `shinyvalidate`.
+-   Building modules in Shiny.
+-   Building bespoke tables with a `reactable` package.
+-   Building network charts.
+-   Building a step-by-step dashboard guidance with `rintrojs`.
+-   Building bespoke visualisations using `echarts4r` and `plotly`
+    packages.
+-   Using JS to customise elements of the `echarts` plots.
+-   Using CSS and HTML to further customise the app.
+-   Creating nested downloadable Rmarkdown documents.
